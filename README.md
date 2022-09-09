@@ -12,7 +12,7 @@ object PingPong {
     fun main(args: Array<String>) {
         val context = HeyWorkFlowContext()
         context.begin(delayWorkFlow("Ping", 0L, 3000L) {
-            println("Ping")
+                println("Ping")
             }).append("Ping", delayWorkFlow("Pong", 0L, 2000L) {
                 println("Pong")
             }).linkDepend("Pong", "Ping")
