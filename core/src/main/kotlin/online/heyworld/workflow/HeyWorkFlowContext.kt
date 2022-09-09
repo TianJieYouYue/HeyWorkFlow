@@ -27,9 +27,9 @@ class HeyWorkFlowContext(private val executorThreadSize:Int=100):HeyWorkFlowStre
 
     val env = HeyWorkFlowEnv(this)
 
-    val heyWorkFlowMap = mutableMapOf<String,HeyWorkFlow>()
+    private val heyWorkFlowMap = mutableMapOf<String,HeyWorkFlow>()
 
-    val dependsMap = mutableMapOf<String,String>()
+    private val dependsMap = mutableMapOf<String,String>()
 
     internal fun beforeRun(heyWorkFlow: HeyWorkFlow) {
         logger.info("beforeRun workFlow:${heyWorkFlow.name}")
