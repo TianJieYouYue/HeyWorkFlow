@@ -40,12 +40,16 @@ class HeyWorkFlowContext(private val executorThreadSize:Int=100):HeyWorkFlowStre
 
     internal fun beforeRun(heyWorkFlow: HeyWorkFlow) {
         logger.info("beforeRun workFlow:${heyWorkFlow.name}")
-        lifecycleHolder.onWorkFlowBefore(heyWorkFlow)
+        if(heyWorkFlow.name != HeyWorkFlowManifest.ROOT){
+            lifecycleHolder.onWorkFlowBefore(heyWorkFlow)
+        }
     }
 
     internal fun afterRun(heyWorkFlow: HeyWorkFlow) {
         logger.info("afterRun workFlow:${heyWorkFlow.name}")
-        lifecycleHolder.onWorkFlowAfter(heyWorkFlow)
+        if(heyWorkFlow.name != HeyWorkFlowManifest.ROOT) {
+            lifecycleHolder.onWorkFlowAfter(heyWorkFlow)
+        }
         dependsMap[heyWorkFlow.name].let {
             if(it == null){
                 logger.info("afterRun work flow end on :${heyWorkFlow.name}")

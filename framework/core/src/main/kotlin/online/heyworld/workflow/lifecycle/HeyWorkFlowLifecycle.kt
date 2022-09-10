@@ -15,3 +15,15 @@ interface HeyWorkFlowLifecycle {
     fun onWorkFlowAfter(workFlow: HeyWorkFlow)
 }
 
+
+open class SimpleHeyWorkFlowLifecycle : HeyWorkFlowLifecycle{
+    override fun onLaunchStart(context: HeyWorkFlowContext) {
+    }
+
+    override fun onWorkFlowBefore(workFlow: HeyWorkFlow) {
+    }
+
+    override fun onWorkFlowAfter(workFlow: HeyWorkFlow) {
+    }
+
+}
