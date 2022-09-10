@@ -18,7 +18,7 @@ object PingPong {
             context.event.post("Ping","Ping","")
         }).append("Ping", delayWorkFlow("Pong", 0L, 0L) {
             println("Pong ${Date()}")
-            context.event.post("Pong","Ping","")
+            context.event.post("Pong","Pong","")
         }).linkDepend("Pong", "Ping")
             .launch(object : HeyWorkFlowLifecycle{
                 override fun onLaunchStart(context: HeyWorkFlowContext) {
