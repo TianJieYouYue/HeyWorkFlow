@@ -102,9 +102,19 @@ class HeyWorkFlowContext(private val executorThreadSize:Int=100):HeyWorkFlowStre
         runWorkFlow(HeyWorkFlowManifest.ROOT)
     }
 
+    override fun shutdown() {
+        resources.clean()
+        taskExecutor.shutdown()
+        executor.shutdown()
+    }
+
     private fun buildRoot(){
         heyWorkFlowMap[HeyWorkFlowManifest.ROOT] = RootHeyWorkFlow().also {
             it.context = this
         }
+    }
+
+    fun isEnd(name: String): Boolean {
+        return dependsMap[name] == null
     }
 }

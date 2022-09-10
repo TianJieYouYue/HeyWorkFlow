@@ -25,7 +25,7 @@ abstract class HeyWorkFlow(val name:String):Runnable,CleanObject {
         context.afterRun(this)
     }
 
-    protected fun queryContext():HeyWorkFlowContext{
+    fun queryContext():HeyWorkFlowContext{
         return context
     }
 

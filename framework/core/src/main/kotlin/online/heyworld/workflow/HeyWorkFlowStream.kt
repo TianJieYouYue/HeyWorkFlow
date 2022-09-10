@@ -33,4 +33,5 @@ interface HeyWorkFlowStream {
      * 启动整个工作流
      */
     fun launch(lifecycle: HeyWorkFlowLifecycle = HeyWorkFlowLifecycleHolder.NONE)
+    fun shutdown()
 }

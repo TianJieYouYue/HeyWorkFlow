@@ -3,6 +3,7 @@ package online.heyworld.workflow.user.case
 import ch.qos.logback.classic.Level
 import ch.qos.logback.classic.LoggerContext
 import online.heyworld.workflow.HeyWorkFlow
+import online.heyworld.workflow.HeyWorkFlowContext
 import online.heyworld.workflow.common.util.delayWorkFlow
 import online.heyworld.workflow.common.util.hey
 import online.heyworld.workflow.common.util.workFlow
@@ -55,13 +56,17 @@ object LoserToFlyer {
             people.age+=3
             people.knowledge+=10
             people.beLike += Random().nextInt(20)
-            Thread.sleep(3*60*1000)
+            Thread.sleep(3*1000)
         }).launch(object : SimpleHeyWorkFlowLifecycle() {
+
             override fun onWorkFlowBefore(workFlow: HeyWorkFlow) {
                 showPeople(people,workFlow, true)
             }
             override fun onWorkFlowAfter(workFlow: HeyWorkFlow) {
                 showPeople(people,workFlow, false)
+                if(workFlow.queryContext().isEnd(workFlow.name)){
+                    workFlow.queryContext().shutdown()
+                }
             }
         })
     }
