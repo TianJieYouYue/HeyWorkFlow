@@ -8,7 +8,6 @@ import online.heyworld.workflow.resources.HeyWorkFlowResources
 import org.slf4j.LoggerFactory
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
-import java.util.concurrent.ThreadFactory
 
 /**
  * 工作流上下文

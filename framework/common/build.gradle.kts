@@ -8,7 +8,8 @@ group = "online.heyworld.workflow"
 
 dependencies {
     implementation(fileTree("libs"))
-    api(project(":core"))
+    api(project(":framework:core"))
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
     testImplementation(kotlin("test"))
 }
 

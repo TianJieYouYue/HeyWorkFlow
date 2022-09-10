@@ -1,4 +1,4 @@
 rootProject.name = "HeyWorkFlow"
-include(":core")
-include(":common")
+include(":framework:core")
+include(":framework:common")
 include(":user_case")

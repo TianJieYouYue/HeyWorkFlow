@@ -8,7 +8,7 @@ group = "online.heyworld.workflow"
 
 dependencies {
     implementation(fileTree("libs"))
-    implementation(project(":common"))
+    implementation(project(":framework:common"))
     implementation("ch.qos.logback:logback-classic:1.4.0")
     testImplementation(kotlin("test"))
 }
