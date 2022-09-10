@@ -1,5 +1,8 @@
 package online.heyworld.workflow
 
+import online.heyworld.workflow.lifecycle.HeyWorkFlowLifecycle
+import online.heyworld.workflow.lifecycle.HeyWorkFlowLifecycleHolder
+
 /**
  * 工作流的创建流程
  */
@@ -29,5 +32,5 @@ interface HeyWorkFlowStream {
     /**
      * 启动整个工作流
      */
-    fun launch()
+    fun launch(lifecycle: HeyWorkFlowLifecycle = HeyWorkFlowLifecycleHolder.NONE)
 }
