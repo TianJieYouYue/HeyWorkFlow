@@ -19,6 +19,7 @@ class HeyWorkFlowContext(private val executorThreadSize:Int=100):HeyWorkFlowStre
     }
 
     private val taskExecutor = Executors.newSingleThreadExecutor { r -> Thread(r, "HeyWorkFlow-main") }
+    private val eventExecutor = Executors.newSingleThreadExecutor { r -> Thread(r, "HeyWorkFlow-event") }
 
     private val lifecycleHolder = HeyWorkFlowLifecycleHolder()
 
@@ -33,7 +34,7 @@ class HeyWorkFlowContext(private val executorThreadSize:Int=100):HeyWorkFlowStre
 
     val resources = HeyWorkFlowResources(this)
 
-    val event = HeyWorkFlowEventCenter(this,taskExecutor)
+    val event = HeyWorkFlowEventCenter(this,eventExecutor)
 
     val env = HeyWorkFlowEnv(this)
 
@@ -107,6 +108,7 @@ class HeyWorkFlowContext(private val executorThreadSize:Int=100):HeyWorkFlowStre
 
     override fun shutdown() {
         resources.clean()
+        eventExecutor.shutdown()
         taskExecutor.shutdown()
         executor.shutdown()
     }

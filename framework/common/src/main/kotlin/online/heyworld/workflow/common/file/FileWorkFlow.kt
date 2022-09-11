@@ -109,7 +109,7 @@ class CopyWorkFlow(
             }
             logger.info("match ${file.name} $match")
             if(notifyProcess){
-                queryContext().event.post("CopyWorkFlow-Notify",name,"${file.name} ${
+                queryContext().event.post("CopyWorkFlow-Notify",this.name,"${file.name} ${
                     if(match) "匹配成功"
                     else "不匹配"
                 }")

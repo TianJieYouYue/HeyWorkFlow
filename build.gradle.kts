@@ -1,4 +1,5 @@
 import java.nio.file.Paths
+import kotlin.io.*
 
 plugins {
     kotlin("jvm") version "1.6.21"
@@ -15,6 +16,15 @@ allprojects{
 
 task("distJars"){
     group = "build"
+    rootProject.subprojects.map { "${it.path}:jar" }.forEach {
+        try {
+            if(it == ":framework:jar"){
+
+            }else{
+                dependsOn(it)
+            }
+        }catch (e:Throwable){}
+    }
     dependsOn("jar")
     rootProject.subprojects {
         val project = this
