@@ -3,10 +3,11 @@ abstract class HeyWorkFlow(val name:String):Runnable,CleanObject {
 
     internal lateinit var context: HeyWorkFlowContext
 
-    protected var exception : Exception? = null
+    internal var exception : Exception? = null
 
     var startDelay = 0L
     var afterDelay = 0L
+    var notifyProcess = false
 
 
     internal fun callRun(){

@@ -10,7 +10,7 @@ object Http {
             http("HeyWorld-Hello", "https://heyworld.online/api/hello", "") {
                 println(it)
             }.also {
-                it.startDelay = 1000
+                it.startDelay = 1
             }
         ).linkDepend("HeyWorld-Hello","HeyWorld-Hello")
             .launch()

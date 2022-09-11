@@ -11,6 +11,21 @@ class HeyWorkFlowLifecycleHolder : HeyWorkFlowLifecycle {
             override fun onWorkFlowBefore(workFlow: HeyWorkFlow) {}
             override fun onWorkFlowAfter(workFlow: HeyWorkFlow) {}
         }
+
+        val EXIT_AT_END : HeyWorkFlowLifecycle = object : HeyWorkFlowLifecycle{
+            override fun onLaunchStart(context: HeyWorkFlowContext) {
+            }
+
+            override fun onWorkFlowBefore(workFlow: HeyWorkFlow) {
+            }
+
+            override fun onWorkFlowAfter(workFlow: HeyWorkFlow) {
+                if(workFlow.queryContext().isEnd(workFlow.name)){
+                    workFlow.queryContext().shutdown()
+                }
+            }
+
+        }
     }
 
 

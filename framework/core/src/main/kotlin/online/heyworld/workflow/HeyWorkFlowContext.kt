@@ -47,6 +47,9 @@ class HeyWorkFlowContext(private val executorThreadSize:Int=100):HeyWorkFlowStre
 
     internal fun afterRun(heyWorkFlow: HeyWorkFlow) {
         logger.info("afterRun workFlow:${heyWorkFlow.name}")
+        if(heyWorkFlow.exception != null){
+            throw RuntimeException(heyWorkFlow.exception)
+        }
         if(heyWorkFlow.name != HeyWorkFlowManifest.ROOT) {
             lifecycleHolder.onWorkFlowAfter(heyWorkFlow)
         }
